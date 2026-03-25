@@ -21,7 +21,7 @@
 
     <style>
         /* ============================================================
-           NUEVA OPCIÓN: ESTILOS DE LA PORTADA (GLASSMORPHISM)
+           ESTILOS DE LA PORTADA
            ============================================================ */
         #portada-bienvenida {
             position: fixed;
@@ -81,7 +81,7 @@
         }
 
         /* ============================================================
-           TUS ESTILOS ORIGINALES (NO TOCAR)
+           ESTILOS DEL TOUR
            ============================================================ */
         html,
         body {
@@ -314,27 +314,18 @@
         }
 
         @media (max-width: 600px) {
-
-            /* Header centrado y más grande */
             #header-superior-logo {
                 top: 15px;
                 left: 50%;
-                /* Lo mueve al centro horizontal */
                 transform: translateX(-50%);
-                /* Ajuste exacto para centrarlo */
                 width: 90%;
-                /* Ocupa casi todo el ancho de la pantalla */
                 justify-content: center;
-                /* Centra el contenido interno (logo + texto) */
                 padding: 12px 15px;
-                /* Un poco más de aire interno */
                 border-radius: 15px;
-                /* Bordes más redondeados */
             }
 
             .logo-cris {
                 height: 30px;
-                /* Logo un poco más grande */
             }
 
             .separador-linea {
@@ -344,18 +335,15 @@
 
             .texto-coomerca {
                 font-size: 13px;
-                /* Texto más legible en móvil */
                 text-align: center;
             }
 
-            /* Título dinámico ajustado para que no choque */
             #texto-escena-dinamico {
                 font-size: 1.6rem;
                 padding: 12px 20px;
                 width: 80%;
             }
 
-            /* Menú hamburguesa (se mantiene abajo a la derecha como pediste) */
             #menu-toggle {
                 top: auto;
                 bottom: 20px;
@@ -369,35 +357,24 @@
             #contenedor-titulo-central {
                 position: absolute;
                 top: 50%;
-                /* Lo baja al centro vertical */
                 left: 50%;
-                /* Lo mueve al centro horizontal */
                 transform: translate(-50%, -50%);
-                /* Ajuste perfecto en ambos ejes */
                 z-index: 1500;
                 pointer-events: none;
                 text-align: center;
                 width: 85%;
-                /* Un poco menos de ancho para que no toque los bordes */
             }
 
             #texto-escena-dinamico {
                 font-size: 1.5rem;
-                /* Tamaño equilibrado para que quepa el texto largo */
                 font-weight: 800;
-                /* Para que se vea imponente como en tu imagen */
                 letter-spacing: 2px;
-                /* Espaciado para mayor legibilidad */
                 padding: 15px 25px;
                 background: rgb(0, 114, 207);
-                /* Azul sólido igual al botón */
                 border-radius: 20px;
                 display: inline-block;
-                /* Asegura que el fondo envuelva solo el texto */
                 width: auto;
-                /* Permite que crezca según el nombre de la escena */
                 max-width: 100%;
-                /* Pero que no se salga de la pantalla */
             }
         }
     </style>
@@ -491,10 +468,12 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
     <script>
-        // FUNCIÓN PARA QUITAR LA PORTADA
+        // AQUÍ ESTÁ EL SEGUNDO CAMBIO: Declaramos la variable viewer vacía al inicio
+        var viewer;
+
         function quitarPortada() {
             const portada = document.getElementById('portada-bienvenida');
             portada.style.opacity = '0';
@@ -503,54 +482,79 @@
             }, 800);
         }
 
-        /* --- TU LÓGICA DE PANNELLUM ORIGINAL --- */
-        var viewer = pannellum.viewer('panorama', {
-            "default": {
-                "firstScene": "fachada",
-                "compass": false,
-                "sceneFadeDuration": 1500,
-                "autoLoad": true,
-                "autoRotate": 0,
-                "hfov": 100,
-                "friction": 0.15,
-                "showControls": false
-            },
-            "scenes": {
-                "fachada": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/fachada", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "escena_160": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/160", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "escena_161": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/161", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "dosytres": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/dosytres", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "quincalla": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/quincalla", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "rivolly": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/rivolly", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "escena_solar": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/solar_pano", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
-                "sub1": {
-                    "type": "multires",
-                    "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/sub1", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 },
-                    "hotSpots": [
-                        {
-                            "pitch": -89.21,
-                            "yaw": -122.65,
-                            "cssClass": "custom-nadir-hotspot",
-                            "createTooltipFunc": nadirTooltip,
-                            "createTooltipArgs": "optimizador_recorridos/imagenes_optimizadas/marca.png",
-                            "scale": true
-                        }
-                    ]
-                },
-                "sub2": {
-                    "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/sub2", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 },
-                    "hotSpots": [
-                        {
-                            "pitch": -89.77,
-                            "yaw": 160.43,
-                            "cssClass": "custom-nadir-hotspot",
-                            "createTooltipFunc": nadirTooltip,
-                            "createTooltipArgs": "optimizador_recorridos/imagenes_optimizadas/marca.png",
-                            "scale": true
-                        }
-                    ]
-                },
-            }
+        // TERCER CAMBIO: Esperamos a que la página cargue, damos un respiro de 500ms, y LUEGO iniciamos el 3D
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                viewer = pannellum.viewer('panorama', {
+                    "default": {
+                        "firstScene": "fachada",
+                        "compass": false,
+                        "sceneFadeDuration": 1500,
+                        "autoLoad": true,
+                        "autoRotate": 0,
+                        "hfov": 100,
+                        "friction": 0.15,
+                        "showControls": false
+                    },
+                    "scenes": {
+                        "fachada": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/fachada", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "escena_160": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/160", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "escena_161": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/161", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "dosytres": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/dosytres", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "quincalla": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/quincalla", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "rivolly": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/rivolly", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "escena_solar": { "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/solar_pano", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 } },
+                        "sub1": {
+                            "type": "multires",
+                            "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/sub1", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 },
+                            "hotSpots": [
+                                {
+                                    "pitch": -89.21,
+                                    "yaw": -122.65,
+                                    "cssClass": "custom-nadir-hotspot",
+                                    "createTooltipFunc": nadirTooltip,
+                                    "createTooltipArgs": "optimizador_recorridos/imagenes_optimizadas/marca.png",
+                                    "scale": true
+                                }
+                            ]
+                        },
+                        "sub2": {
+                            "type": "multires", "multiRes": { "basePath": "optimizador_recorridos/imagenes_optimizadas/sub2", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3816 },
+                            "hotSpots": [
+                                {
+                                    "pitch": -89.77,
+                                    "yaw": 160.43,
+                                    "cssClass": "custom-nadir-hotspot",
+                                    "createTooltipFunc": nadirTooltip,
+                                    "createTooltipArgs": "optimizador_recorridos/imagenes_optimizadas/marca.png",
+                                    "scale": true
+                                }
+                            ]
+                        },
+                    }
+                });
+
+                // Movemos los eventos de Pannellum dentro del Timeout para que se asignen después de que viewer exista
+                viewer.on('scenechange', function (sceneId) {
+                    document.querySelectorAll('.thumb-v').forEach(t => t.classList.remove('activa'));
+                    const activeThumb = document.getElementById('thumb-' + sceneId);
+                    if (activeThumb) {
+                        activeThumb.classList.add('activa');
+                        const nombreEscena = activeThumb.querySelector('span').innerText;
+                        const contenedor = document.getElementById('texto-escena-dinamico');
+                        contenedor.innerText = nombreEscena;
+                        contenedor.classList.remove('animar-titulo');
+                        void contenedor.offsetWidth;
+                        contenedor.classList.add('animar-titulo');
+                    }
+                });
+
+                viewer.on('mousedown', function (event) {
+                    var coords = viewer.mouseEventToCoords(event);
+                    console.log("COORDENADAS DETECTADAS: Pitch: " + coords[0] + " | Yaw: " + coords[1]);
+                });
+
+            }, 500); // <-- Este es el truco mágico. Espera medio segundo.
         });
 
         function toggleMenu() {
@@ -567,25 +571,13 @@
             }
         }
 
-        viewer.on('scenechange', function (sceneId) {
-            document.querySelectorAll('.thumb-v').forEach(t => t.classList.remove('activa'));
-            const activeThumb = document.getElementById('thumb-' + sceneId);
-            if (activeThumb) {
-                activeThumb.classList.add('activa');
-                const nombreEscena = activeThumb.querySelector('span').innerText;
-                const contenedor = document.getElementById('texto-escena-dinamico');
-                contenedor.innerText = nombreEscena;
-                contenedor.classList.remove('animar-titulo');
-                void contenedor.offsetWidth;
-                contenedor.classList.add('animar-titulo');
-            }
-        });
-
         function irAEscena(id) {
-            viewer.loadScene(id);
-            const menu = document.getElementById('side-menu');
-            if (menu.classList.contains('menu-abierto')) {
-                toggleMenu();
+            if(viewer) {
+                viewer.loadScene(id);
+                const menu = document.getElementById('side-menu');
+                if (menu.classList.contains('menu-abierto')) {
+                    toggleMenu();
+                }
             }
         }
 
@@ -596,12 +588,7 @@
             hotSpotDiv.appendChild(image);
         }
 
-        viewer.on('mousedown', function (event) {
-            var coords = viewer.mouseEventToCoords(event);
-            console.log("COORDENADAS DETECTADAS: Pitch: " + coords[0] + " | Yaw: " + coords[1]);
-        });
     </script>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "35f72eef3e32401bb92920508a440322"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "35f72eef3e32401bb92920508a440322"}'></script></body>
 
 </html>
